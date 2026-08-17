@@ -1,0 +1,28 @@
+/* Shared only for safe-area geometry and narrow-screen readability. */
+@media(max-width:600px){
+  :root{--fiction-h:56px}
+  .ward-pagehead h1,.ward-content h2,.ward-content h3,
+  .mat-pagehead h1,.mat-document h2,.mat-mark,
+  .res-hero h1,.res-main h1,.res-main h2,
+  .out-main h1,.out-fragment h2,.out-end h2{
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+    text-wrap:balance;
+  }
+  .ward-table th:first-child,.ward-table td:first-child{white-space:nowrap}
+  .ward-heading-phrase,.mat-heading-phrase,.res-heading-phrase,.out-heading-phrase{white-space:nowrap}
+  .mat-header-inner{flex-wrap:wrap;align-items:flex-start;gap:10px}
+  .mat-ref{flex-basis:100%;padding-top:8px;border-top:1px solid var(--mat-line)}
+}
+@media(max-width:350px){
+  :root{--fiction-h:72px}
+  .mat-pagehead h1{font-size:26px}
+  .res-hero h1{font-size:27px}
+  .out-fragment h2{font-size:22px}
+}
+@media(min-width:821px){
+  body.materials-differences .mat-main{max-width:1380px}
+  body.materials-differences .mat-layout{grid-template-columns:190px minmax(0,1fr);gap:32px}
+  body.materials-differences .mat-document{padding:32px 28px}
+  body.materials-differences .mat-table{min-width:1080px}
+}
