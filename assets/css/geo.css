@@ -182,3 +182,28 @@
   .geo-viewer-stage { padding:10px 6px; }
   .geo-viewer-page { width:100%; min-width:0; min-height:0; padding:28px 20px; }
 }
+
+/* disclosure sheets must fit the viewport without a nested horizontal scroller */
+.geo-pdf-viewer { max-width:100%; overflow:hidden; border-radius:0; }
+.geo-viewer-stage { max-width:100%; overflow-x:hidden; }
+.geo-viewer-page,
+.geo-viewer-page * { box-sizing:border-box; min-width:0; max-width:100%; overflow-wrap:anywhere; }
+.geo-project-meeting { margin-top:28px; }
+.geo-project-meeting table { width:100%; min-width:0; table-layout:fixed; border-collapse:collapse; }
+.geo-project-meeting th:nth-child(1) { width:24%; }
+.geo-project-meeting th:nth-child(2) { width:20%; }
+.geo-project-meeting th:nth-child(3) { width:56%; }
+
+@media(max-width:600px) {
+  .geo-viewer-toolbar { max-width:100%; padding-inline:10px; }
+  .geo-viewer-toolbar > span { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .geo-project-meeting thead { display:none; }
+  .geo-project-meeting table,
+  .geo-project-meeting tbody,
+  .geo-project-meeting tr,
+  .geo-project-meeting td { display:block; width:100%; }
+  .geo-project-meeting tr { border:1px solid #777; }
+  .geo-project-meeting td { border:0; border-bottom:1px solid #bbb; }
+  .geo-project-meeting td:last-child { border-bottom:0; }
+  .geo-project-meeting td::before { display:block; margin-bottom:3px; color:#555; content:attr(data-label); font-size:10px; font-weight:700; }
+}

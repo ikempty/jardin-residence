@@ -2658,3 +2658,99 @@ body.ward {
   .ward-inland-yato { grid-template-columns:1fr; }
   .ward-inland-request ul { grid-template-columns:1fr; }
 }
+
+/* document sheets: neutral municipal print and narrow-screen fitting */
+.ward-document-viewer { max-width:100%; overflow:hidden; border-radius:0; }
+.ward-viewer-stage { max-width:100%; overflow-x:hidden; }
+.ward-viewer-page,
+.ward-viewer-page * { box-sizing:border-box; min-width:0; max-width:100%; overflow-wrap:anywhere; }
+.ward-pdf-table { width:100%; overflow:visible; }
+.ward-r18-results { width:100%; min-width:0; table-layout:fixed; border-collapse:collapse; }
+.ward-r18-results th,
+.ward-r18-results td { padding:10px; border:1px solid #777; color:#111; background:#fff; vertical-align:top; }
+.ward-r18-results thead th,
+.ward-r18-results tbody th { color:#111; background:#eee; }
+.ward-r18-control { border-bottom-color:#222; }
+.ward-r18-control > p,
+.ward-r18-label,
+.ward-content .ward-r18-decision h3,
+.ward-r18-results strong { color:#111; }
+.ward-r18-control dt,
+.ward-r18-judgment dt { color:#111; background:#eee; }
+.ward-r18-decision { border:2px solid #333; background:#fff; }
+.ward-r18-judgment { border-top-color:#777; }
+
+.ward-minutes-record { color:#111; background:#fff; }
+.ward-word-export .ward-archive-record { padding:0 0 24px; border:0; border-bottom:2px solid #222; background:#fff; }
+.ward-word-export .ward-archive-record > h2 { margin:0 0 20px; padding:0 0 14px; border-bottom:3px double #222; color:#111; font-size:25px; }
+.ward-word-export .ward-record-meta { border-color:#777; }
+.ward-word-export .ward-record-meta dt { color:#111; background:#eee; }
+.ward-word-export .ward-record-meta > div { border-color:#aaa; }
+.ward-minutes-record .ward-minutes-transcript h2 { color:#111; border-bottom-color:#555; }
+.ward-minutes-record .ward-speaker { color:#111; background:#eee; }
+.ward-minutes-record .ward-speaker span { color:#444; }
+.ward-minutes-record .ward-exchange { border-color:#aaa; }
+
+.ward-approval-head { padding-right:164px; }
+.ward-approval-stamps { top:0; right:0; gap:0; border-top:1px solid #444; border-left:1px solid #444; }
+.ward-approval-stamps > span { display:grid; grid-template-rows:23px 72px; width:70px; height:96px; border:0; border-right:1px solid #444; border-bottom:1px solid #444; border-radius:0; color:#222; background:#fff; font-size:10px; line-height:1; transform:none; }
+.ward-approval-stamps > span > b { display:grid; place-items:center; border-bottom:1px solid #777; font-style:normal; font-weight:700; }
+.ward-approval-stamps > span > i { display:grid; width:48px; height:48px; place-content:center; align-self:center; justify-self:center; border:2px solid #9a3d36; border-radius:50%; color:#9a3d36; font-style:normal; font-weight:700; line-height:1.05; text-align:center; transform:rotate(-4deg); }
+.ward-approval-stamps small { display:block; margin-top:2px; font-size:8px; }
+.ward-content .ward-approval-document > section > h3 {
+  margin:0 0 12px;
+  padding:0 0 7px;
+  border:0;
+  border-bottom:1px solid #555;
+  color:#111;
+  font-family:"Meiryo UI",Meiryo,sans-serif;
+  font-size:17px;
+  font-weight:700;
+  line-height:1.5;
+  letter-spacing:0;
+}
+.ward-content .ward-approval-document > section > p {
+  font-size:16px;
+  line-height:1.75;
+}
+.ward-inland-sheet .ward-approval-head > dl {
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.ward-inland-sheet .ward-approval-head > dl > div {
+  grid-template-columns:58px minmax(0,1fr);
+}
+.ward-inland-assignee { align-items:stretch; gap:0; padding:0; border:1px solid #555; color:#111; background:#fff; }
+.ward-inland-assignee span,
+.ward-inland-assignee strong { display:flex; align-items:center; padding:11px 13px; }
+.ward-inland-assignee span { border-right:1px solid #777; color:#222; background:#eee; }
+.ward-inland-assignee strong { color:#111; font-size:14px; font-weight:700; }
+
+@media (max-width:600px) {
+  .ward-viewer-toolbar { max-width:100%; padding-inline:10px; }
+  .ward-viewer-toolbar > div { flex:none; }
+  .ward-viewer-file { flex:1; min-width:0; }
+  .ward-viewer-page { padding:24px 16px; }
+  .ward-r18-results thead { display:none; }
+  .ward-r18-results,
+  .ward-r18-results tbody,
+  .ward-r18-results tr,
+  .ward-r18-results th,
+  .ward-r18-results td { display:block; width:100%; }
+  .ward-r18-results tr { margin-bottom:14px; border:1px solid #777; }
+  .ward-r18-results th,
+  .ward-r18-results td { border:0; border-bottom:1px solid #bbb; }
+  .ward-r18-results td:last-child { border-bottom:0; }
+  .ward-r18-results td::before { display:block; margin-bottom:3px; color:#555; content:attr(data-label); font-size:10px; font-weight:700; }
+  .ward-record-meta > div { grid-template-columns:1fr; }
+  .ward-record-meta dt { padding-bottom:3px; border-bottom:0; }
+  .ward-record-meta dd { padding-top:3px; }
+  .ward-approval-head { padding-top:116px; padding-right:0; }
+  .ward-approval-stamps { left:0; right:auto; }
+  .ward-inland-sheet .ward-approval-head > dl { grid-template-columns:1fr; }
+  .ward-inland-sheet .ward-approval-head > dl > div + div {
+    border-top:1px solid #8c999c;
+    border-left:0;
+  }
+  .ward-inland-assignee { display:block; }
+  .ward-inland-assignee span { border-right:0; border-bottom:1px solid #777; }
+}

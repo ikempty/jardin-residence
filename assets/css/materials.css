@@ -1534,3 +1534,82 @@ body.materials {
   .mat-search-controls { grid-template-columns: minmax(0,1fr) 84px; }
   .mat-search-controls button { min-width: 0; }
 }
+
+/* 2026-08-20: SSH/Linux terminal narrative */
+body.materials-ssh {
+  min-height:100vh;
+  background:#030404;
+  color:#c8d0cc;
+  font-family:ui-monospace,"SFMono-Regular",Consolas,"Meiryo UI",monospace;
+}
+.materials-ssh .mat-header { border-bottom:1px solid #1c2522; background:#050707; }
+.materials-ssh .mat-mark { color:#aeb9b4; font-size:12px; font-weight:600; }
+.materials-ssh .mat-footer { border-top:1px solid #171e1c; background:#030404; }
+.ssh-main { width:min(1240px,calc(100% - 32px)); margin:0 auto; padding:32px 0 90px; }
+.ssh-terminal { overflow:hidden; border:1px solid #28322f; background:#060808; box-shadow:0 24px 80px rgb(0 0 0 / 58%); }
+.ssh-terminal > header { display:flex; justify-content:space-between; gap:20px; padding:10px 15px; border-bottom:1px solid #28322f; color:#7e8c86; background:#0d1110; font-size:11px; letter-spacing:.04em; }
+.ssh-terminal-body { min-height:620px; padding:clamp(18px,3vw,34px); background:repeating-linear-gradient(0deg,rgb(255 255 255 / 1.2%) 0 1px,transparent 1px 4px),#060808; }
+.ssh-files { margin:0; }
+.ssh-files h2 { margin:0 0 15px; color:#83b99f; font:600 13px/1.6 ui-monospace,Consolas,"Meiryo UI",monospace; }
+.ssh-files ol { margin:0; padding:0; list-style:none; }
+.ssh-file { display:grid; grid-template-columns:105px 58px 155px minmax(0,1fr); gap:12px; min-height:30px; align-items:center; color:#4c5853; font-size:12px; line-height:1.45; }
+.ssh-file > span:nth-child(-n+3),.ssh-file time { color:#46504c; white-space:nowrap; }
+.ssh-file-read { color:#78837e; }
+.ssh-file-read > span:last-child::after { margin-left:9px; color:#46504c; content:"[read]"; }
+.ssh-file-locked > span:last-child::after { margin-left:9px; color:#343b38; content:"[locked]"; }
+.ssh-file-system { color:#37403c; }
+.ssh-file-active a { display:inline-flex; min-height:28px; align-items:center; color:#ff5b64; font-weight:750; text-decoration:none; text-shadow:0 0 12px rgb(255 65 76 / 24%); }
+.ssh-file-active a::before { margin-right:8px; content:">"; }
+.ssh-file-active a:hover,.ssh-file-active a:focus-visible { color:#ff858b; text-decoration:underline; }
+.ssh-files > p { margin:18px 0 0; color:#4c5c55; font-size:11px; }
+.ssh-ready { margin:36px 0 0; color:#7e8c86; font-size:12px; line-height:1.9; }
+.ssh-ready span { color:#88b9a2; }
+.ssh-ready i { display:inline-block; width:8px; height:15px; margin-top:16px; background:#7daf98; animation:ssh-caret 1.05s steps(1) infinite; }
+@keyframes ssh-caret { 50% { opacity:0; } }
+.ssh-output { margin-top:32px; padding-top:28px; border-top:1px dashed #2a3531; }
+.ssh-command { margin:0 0 24px; color:#78857f; font-size:12px; overflow-wrap:anywhere; }
+.ssh-command span { color:#83b99f; }
+.ssh-diary,.ssh-report { max-width:780px; margin:0; padding:clamp(20px,4vw,40px); border-left:2px solid #42534c; background:#090c0b; }
+.ssh-diary > header,.ssh-report > header { margin-bottom:26px; padding-bottom:18px; border-bottom:1px solid #28332f; }
+.ssh-diary > header p,.ssh-report > header p { margin:0 0 8px; color:#718078; font-size:11px; letter-spacing:.08em; }
+.ssh-diary h1,.ssh-report h1 { margin:0; color:#e0e5e2; font:600 clamp(22px,4vw,34px)/1.4 ui-monospace,Consolas,"Meiryo UI",monospace; }
+.ssh-diary > p { margin:0 0 1.25em; color:#c6cfca; font-size:15px; line-height:2; }
+.ssh-report dl { display:flex; flex-wrap:wrap; gap:7px 22px; margin:20px 0 0; font-size:11px; }
+.ssh-report dl div { display:flex; gap:8px; }
+.ssh-report dt { color:#68766f; }
+.ssh-report dd { margin:0; color:#aab5af; }
+.ssh-report section { padding:20px 0 6px; }
+.ssh-report h2 { margin:0 0 16px; color:#9da9a3; font-size:13px; }
+.ssh-report section strong { display:block; margin:0 0 18px; padding:17px 18px; border:1px solid #8d9b94; color:#f0f3f1; font-size:clamp(20px,4vw,30px); line-height:1.55; }
+.ssh-report section p { color:#bbc4bf; line-height:1.9; }
+.ssh-report footer { margin-top:24px; color:#56635d; font-size:10px; }
+.ssh-diary-log { margin:0; padding:0; list-style:none; }
+.ssh-diary-log li { display:grid; grid-template-columns:110px minmax(0,1fr); gap:18px; padding:21px 0; border-top:1px solid #202a26; }
+.ssh-diary-log time { color:#75917f; font-size:12px; }
+.ssh-diary-log h2 { margin:0 0 7px; color:#d8dedb; font-size:16px; }
+.ssh-diary-log p { margin:0; color:#b9c3be; line-height:1.85; }
+.materials-ssh .mat-final-handoff { margin-top:36px; padding-top:28px; border-top:1px solid #3a4641; }
+.materials-ssh .mat-final-handoff > h2 { color:#b5c0ba; font-size:15px; letter-spacing:.08em; }
+.materials-ssh .mat-drafts { grid-template-columns:1fr 1fr; }
+.materials-ssh .mat-draft { border-color:#303a36; background:#080b0a; }
+.materials-ssh .mat-draft-heading { border-color:#303a36; background:#0c100f; }
+.materials-ssh .mat-draft-heading h2 { color:#d7ddda; }
+.materials-ssh .mat-choice { border:1px solid #743339; color:#ff6b73; background:#16090a; font-family:inherit; }
+.materials-ssh .mat-choice:hover,.materials-ssh .mat-choice:focus-visible { border-color:#ff5b64; color:#ff9297; background:#210c0e; }
+
+@media (max-width:700px) {
+  .ssh-main { width:100%; padding:0 0 68px; }
+  .ssh-terminal { border-right:0; border-left:0; }
+  .ssh-terminal-body { min-height:560px; padding:20px 14px 28px; }
+  .ssh-file { grid-template-columns:78px 42px minmax(0,1fr); gap:7px; padding:6px 0; }
+  .ssh-file time { grid-column:1 / 3; grid-row:2; font-size:10px; }
+  .ssh-file > :last-child { grid-column:3; grid-row:1 / 3; overflow-wrap:anywhere; }
+  .ssh-diary,.ssh-report { padding:24px 17px; border-left:1px solid #42534c; }
+  .ssh-diary > p { font-size:14px; line-height:1.9; }
+  .ssh-diary-log li { grid-template-columns:1fr; gap:6px; }
+  .materials-ssh .mat-drafts { grid-template-columns:1fr; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .ssh-ready i { animation:none; }
+}

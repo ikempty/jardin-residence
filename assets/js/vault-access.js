@@ -17,7 +17,7 @@
     timers.forEach(window.clearTimeout);
     stages.forEach((stage) => stage.classList.add("is-complete"));
     if (bar) bar.style.setProperty("--vault-progress", "100%");
-    if (status) status.textContent = "ACCESS GRANTED / READ-ONLY SESSION";
+    if (status) status.textContent = "REMOTE SHELL READY / READ ONLY";
     gate.classList.add("is-granted");
     window.setTimeout(() => {
       document.documentElement.classList.remove("vault-access-active");
@@ -29,7 +29,7 @@
   gate.hidden = false;
   if (skip) skip.addEventListener("click", finish, { once: true });
 
-  const messages = ["VERIFYING UPDATE SIGNATURE", "LOCATING RECORD INDEX", "CHECKING ARCHIVE INTEGRITY", "MOUNTING READ-ONLY STORAGE"];
+  const messages = ["CONNECTING FROM LOCAL DEVICE", "ENTERING TOWAN NETWORK", "OPENING TAKEUCHI WORKSPACE", "STARTING LINUX SHELL"];
   const interval = reducedMotion ? 45 : 390;
   stages.forEach((stage, index) => {
     timers.push(window.setTimeout(() => {
