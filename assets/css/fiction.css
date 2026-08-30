@@ -1,1 +1,24 @@
-:root{--fiction-h:34px}.fiction-notice{position:fixed;z-index:900;inset:auto 0 0;min-height:var(--fiction-h);margin:0;padding:7px max(12px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:rgba(22,25,27,.96);color:#fff;font:500 12px/1.45 system-ui,-apple-system,"Yu Gothic",sans-serif;text-align:center;letter-spacing:.01em}.has-fiction{padding-bottom:calc(var(--fiction-h) + env(safe-area-inset-bottom))}
+:root { --fiction-h: 44px; }
+.fiction-notice {
+  position: fixed;
+  z-index: 900;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: var(--fiction-h);
+  margin: 0;
+  padding: 8px max(12px, env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  display: grid;
+  place-items: center;
+  background: #16191b;
+  color: #fff;
+  font: 500 11px/1.4 system-ui, -apple-system, "Yu Gothic", sans-serif;
+  text-align: center;
+  letter-spacing: .01em;
+}
+.has-fiction { padding-bottom: calc(var(--fiction-h) + env(safe-area-inset-bottom)); }
+
+@media (max-width: 520px) {
+  :root { --fiction-h: 58px; }
+  .fiction-notice { font-size: 10px; }
+}

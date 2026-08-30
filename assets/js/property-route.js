@@ -20,7 +20,9 @@
 
       if (position === expected.length) {
         position = 0;
-        window.location.assign(target);
+        document.documentElement.classList.add("property-route-departing");
+        document.body.setAttribute("aria-busy", "true");
+        window.setTimeout(() => window.location.assign(target), 450);
       }
     });
   });

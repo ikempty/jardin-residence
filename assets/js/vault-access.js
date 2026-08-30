@@ -3,40 +3,44 @@
 (() => {
   const gate = document.querySelector("[data-vault-gate]");
   if (!gate) return;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const stages = [...gate.querySelectorAll("[data-vault-stage]")];
-  const status = gate.querySelector("[data-vault-status]");
-  const bar = gate.querySelector("[data-vault-progress]");
+  const lines = [...gate.querySelectorAll("[data-vault-line]")];
   const skip = gate.querySelector("[data-vault-skip]");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const timers = [];
   let finished = false;
 
-  const finish = () => {
+  if (window.location.hash === "#reread") {
+    gate.hidden = true;
+    window.history.replaceState(null,"",`${window.location.pathname}${window.location.search}`);
+    return;
+  }
+
+  function finish() {
     if (finished) return;
     finished = true;
     timers.forEach(window.clearTimeout);
-    stages.forEach((stage) => stage.classList.add("is-complete"));
-    if (bar) bar.style.setProperty("--vault-progress", "100%");
-    if (status) status.textContent = "REMOTE SHELL READY / READ ONLY";
-    gate.classList.add("is-granted");
-    window.setTimeout(() => {
-      document.documentElement.classList.remove("vault-access-active");
-      gate.hidden = true;
-    }, reducedMotion ? 80 : 420);
-  };
+    lines.forEach((line) => line.classList.add("is-visible"));
+    gate.hidden = true;
+    document.documentElement.classList.remove("vault-access-active");
+    const input = document.querySelector("[data-record-command] input");
+    if (input && !reduced) input.focus({ preventScroll:true });
+  }
 
   document.documentElement.classList.add("vault-access-active");
   gate.hidden = false;
-  if (skip) skip.addEventListener("click", finish, { once: true });
+  if (lines[0]) lines[0].classList.add("is-visible");
+  if (skip) skip.addEventListener("click", finish, { once:true });
 
-  const messages = ["CONNECTING FROM LOCAL DEVICE", "ENTERING TOWAN NETWORK", "OPENING TAKEUCHI WORKSPACE", "STARTING LINUX SHELL"];
-  const interval = reducedMotion ? 45 : 390;
-  stages.forEach((stage, index) => {
-    timers.push(window.setTimeout(() => {
-      stage.classList.add("is-complete");
-      if (status) status.textContent = messages[index];
-      if (bar) bar.style.setProperty("--vault-progress", `${Math.round(((index + 1) / stages.length) * 100)}%`);
-    }, interval * (index + 1)));
+  if (reduced) {
+    lines.forEach((line) => line.classList.add("is-visible"));
+    if (skip) skip.hidden = false;
+    timers.push(window.setTimeout(finish, 100));
+    return;
+  }
+
+  timers.push(window.setTimeout(() => { if (skip) skip.hidden = false; }, 500));
+  [360, 780, 1200, 1650, 2050].forEach((delay, index) => {
+    timers.push(window.setTimeout(() => lines[index + 1] && lines[index + 1].classList.add("is-visible"), delay));
   });
-  timers.push(window.setTimeout(finish, interval * (stages.length + 1)));
+  timers.push(window.setTimeout(finish, 2350));
 })();

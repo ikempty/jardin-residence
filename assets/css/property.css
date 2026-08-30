@@ -488,6 +488,7 @@ body.property-site {
 .property-outline-table dt { color: var(--muted); background: #eeebe5; font-size: 12px; font-weight: 700; }
 .property-outline-table dd { font-size: 13px; }
 .property-outline-table a { color: var(--wine-dark); font-weight: 700; }
+.property-outline-seller a { font-weight: 400; }
 .property-outline-next { margin: 18px 0 0; color: var(--muted); font-size: 11px; }
 
 .property-seller { padding-block: 78px; color: #fff; background: var(--green); }
@@ -656,4 +657,21 @@ body.property-site {
 
 @media (prefers-reduced-motion: reduce) {
   .property-navigation a::after { transition: none; }
+}
+html.property-route-departing::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #090d12;
+  animation: property-route-fade .45s ease-out both;
+}
+
+@keyframes property-route-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.property-route-departing::after { animation-duration: .01ms; }
 }
