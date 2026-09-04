@@ -39,10 +39,16 @@
     if (consoleNode) consoleNode.scrollTop = consoleNode.scrollHeight;
   }
 
+  function commandNotFound(value) {
+    return `bash: ${value}: command not found`;
+  }
+
   function loadRecords() {
     try {
       const parsed = JSON.parse(window.sessionStorage.getItem(storageKey) || "[]");
-      if (Array.isArray(parsed) && parsed.every((item) => item && typeof item.value === "string" && ["success","error"].includes(item.status))) return parsed;
+      if (Array.isArray(parsed) && parsed.every((item) => item && typeof item.value === "string" && ["success","error"].includes(item.status))) {
+        return parsed.map((item) => normalize(item.value) === "outbox" ? {...item,value:"メールの下書き"} : item);
+      }
     } catch {}
     return [];
   }
@@ -59,7 +65,7 @@
     historyNode.replaceChildren();
     records.forEach((item) => {
       appendLine("command",item.value);
-      appendLine(item.status,item.status === "success" ? `record opened: ${item.value}` : "該当する記録はありません");
+      appendLine(item.status,item.status === "success" ? `record opened: ${item.value}` : commandNotFound(item.value));
     });
   }
 
@@ -68,10 +74,13 @@
 
   if (!form || !input) return;
   let targets = new Map();
+  let effects = new Map();
   try {
     targets = new Map(JSON.parse(form.dataset.recordMap || "[]"));
+    effects = new Map(JSON.parse(form.dataset.recordEffectMap || "[]"));
   } catch {
     targets = new Map();
+    effects = new Map();
   }
 
   form.addEventListener("submit",(event) => {
@@ -89,7 +98,7 @@
     if (!target) {
       records.push({value,status:"error"});
       saveRecords(records);
-      appendLine("error","該当する記録はありません");
+      appendLine("error",commandNotFound(value));
       input.setAttribute("aria-invalid","true");
       input.focus({preventScroll:true});
       return;
@@ -100,6 +109,8 @@
     saveRecords(records);
     appendLine("success",message);
     input.removeAttribute("aria-invalid");
+    const effect = effects.get(termHash(value));
+    if (effect) window.sessionStorage.setItem(`record_effect_${effect}`,"pending");
     window.setTimeout(() => window.location.assign(target),160);
   });
 })();

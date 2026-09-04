@@ -10,6 +10,7 @@
       const base = button.dataset.outcome;
       if (!base) return;
       window.localStorage.setItem(storageKey,value);
+      window.sessionStorage.setItem("azr_material_action_at",String(Date.now()));
       document.querySelectorAll("[data-recipient]").forEach((item) => { item.disabled = true; });
       const transition = document.createElement("div");
       transition.className = "choice-transition";

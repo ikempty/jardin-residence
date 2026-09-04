@@ -15,9 +15,8 @@ body.sumai-forum { margin: 0; background: var(--sf-bg); color: #263238; font-fam
 .sf-main,
 .sf-footer > div { width: min(1120px, calc(100% - 36px)); margin-inline: auto; }
 .sf-top { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-.sf-logo { color: var(--sf-deep); text-decoration: none; }
-.sf-logo strong { display: block; font-size: 27px; letter-spacing: -.04em; }
-.sf-logo span { display: block; color: var(--sf-blue); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.sf-logo { display: block; width: 250px; height: 60px; overflow: hidden; text-decoration: none; }
+.sf-logo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .sf-search { width: min(420px, 48vw); display: grid; grid-template-columns: 1fr 66px; }
 .sf-search input { min-width: 0; min-height: 40px; padding: 0 12px; border: 1px solid #aeb9c1; border-right: 0; }
 .sf-search button { border: 0; background: var(--sf-blue); color: #fff; font-weight: 700; }
@@ -41,10 +40,9 @@ body.sumai-forum { margin: 0; background: var(--sf-bg); color: #263238; font-fam
 .sf-post header { display: flex; flex-wrap: wrap; gap: 7px 10px; color: #5d6871; font-family: "MS PGothic", "Yu Gothic", sans-serif; font-size: 12px; }
 .sf-post header a { color: var(--sf-orange); font-weight: 700; text-decoration: none; }
 .sf-post p { margin: 10px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; font-family: "MS PGothic", "Yu Gothic", sans-serif; font-size: 15px; }
-.sf-post-clue { border-left: 5px solid #c78335; background: #fffdf7 !important; }
-.sf-property-link { display: flex; align-items: center; gap: 10px; margin-top: 14px !important; padding: 12px; border: 1px solid #9db3c5; background: #f2f7fb; }
-.sf-property-link a { color: #164f82; font-family: Arial, "Yu Gothic", sans-serif; font-weight: 800; text-underline-offset: 3px; }
-.sf-property-link span { margin-left: auto; color: var(--sf-muted); font-size: 10px; }
+.sf-property-link { margin-top: 14px !important; padding: 0; border: 0; background: transparent; }
+.sf-property-link a { color: inherit; font-family: inherit; font-weight: 400; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.sf-property-link span { margin-left: 8px; color: var(--sf-muted); font-size: 10px; }
 .sf-pagination { display: flex; gap: 6px; padding: 20px 0; }
 .sf-pagination span,
 .sf-pagination a { min-width: 38px; min-height: 38px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #aeb8c0; background: #fff; color: var(--sf-deep); text-decoration: none; }
@@ -86,7 +84,7 @@ body.sumai-forum { margin: 0; background: var(--sf-bg); color: #263238; font-fam
   .sf-main,
   .sf-footer > div { width: min(100% - 20px, 1120px); }
   .sf-top { min-height: 66px; }
-  .sf-logo strong { font-size: 23px; }
+  .sf-logo { width: 210px; height: 50px; }
   .sf-search { display: none; }
   .sf-nav > div { width: 100%; }
   .sf-nav a { min-width: 126px; }
@@ -94,7 +92,5 @@ body.sumai-forum { margin: 0; background: var(--sf-bg); color: #263238; font-fam
   .sf-topic-head h1 { font-size: 25px; }
   .sf-post { padding: 13px 12px 15px; }
   .sf-post p { font-size: 14px; }
-  .sf-property-link { align-items: flex-start; flex-direction: column; }
-  .sf-property-link span { margin-left: 0; }
   .sf-sidebar { grid-template-columns: 1fr; }
 }

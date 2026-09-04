@@ -92,9 +92,9 @@
 .ward-word-export .ward-exchange { border: 0; border-bottom: 1px solid #aaa; border-radius: 0; background: transparent; }
 .ward-magazine-stage { padding: 36px; overflow: auto; background: #d9dde0; }
 .ward-magazine-page { box-sizing: border-box; width: min(860px, 100%); margin: 0 auto; padding: clamp(28px, 5vw, 70px); border: 0; color: #1e2a2f; background: #fff; box-shadow: 0 6px 22px rgb(0 0 0 / 24%); }
-.ward-magazine-page .ward-koho-masthead { background: #eef5f7; }
-.ward-magazine-page .ward-koho-deck { background: #e7f1f3; }
-.ward-magazine-page .ward-yato-figure { background: #f5f8f9; }
+.ward-magazine-page .ward-koho-masthead,
+.ward-magazine-page .ward-koho-deck,
+.ward-magazine-page .ward-yato-figure { background: transparent; }
 .ward-inland-sheet > header { padding-bottom: 27px; border-bottom: 3px double #394b50; }
 .ward-inland-sheet > header > p { margin: 0 0 18px; color: #52666b; font-size: 11px; letter-spacing: .08em; }
 .ward-inland-sheet > header h2 { margin: 0 0 22px; font-family: "Yu Mincho", serif; font-size: 30px; line-height: 1.45; }
@@ -1640,6 +1640,19 @@ body.ward {
   border-bottom-color: #66747b;
 }
 
+.ward-minutes-topic + .ward-minutes-topic {
+  margin-top: 30px;
+}
+
+.ward-minutes-record .ward-minutes-topic h3 {
+  margin: 0 0 10px;
+  padding: 0 0 8px 12px;
+  border-bottom: 1px solid #777;
+  color: #111;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .ward-exchange-list {
   margin: 0;
   padding: 0;
@@ -1694,14 +1707,16 @@ body.ward {
 /* 区広報バックナンバー */
 .ward-koho-issue {
   padding: clamp(24px, 4.5vw, 48px);
-  border: 1px solid #d9d4c6;
-  background: #fffdf7;
-  box-shadow: 0 12px 34px rgba(52, 61, 57, .08);
+  border: 0;
+  color: #1d282d;
+  background: #fff;
+  box-shadow: none;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", serif;
 }
 
 .ward-koho-masthead {
-  padding-bottom: 28px;
-  border-bottom: 4px double #344f5b;
+  padding-bottom: 18px;
+  border: 0;
 }
 
 .ward-koho-publication {
@@ -1709,17 +1724,45 @@ body.ward {
   align-items: end;
   justify-content: space-between;
   gap: 24px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #9ca7aa;
+  padding-bottom: 0;
+  border: 0;
 }
 
 .ward-koho-name {
+  display: flex;
+  align-items: center;
+  gap: 11px;
   margin: 0;
-  color: #173f52;
-  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-  font-size: clamp(25px, 3.2vw, 38px);
+  color: #1b3040;
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
   font-weight: 800;
   letter-spacing: .05em;
+}
+
+.ward-koho-name .ward-koho-series {
+  font-size: 13px;
+  letter-spacing: .16em;
+}
+
+.ward-koho-name .ward-koho-logo-mark {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #244f3b;
+  font-family: "Yu Gothic", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0;
+  box-shadow: inset 0 0 0 4px #244f3b, inset 0 0 0 5px rgba(255,255,255,.75);
+}
+
+.ward-koho-name strong {
+  font-size: clamp(27px, 3.2vw, 39px);
+  letter-spacing: .035em;
 }
 
 .ward-koho-issue-data {
@@ -1729,15 +1772,18 @@ body.ward {
   gap: 4px 14px;
   margin: 0;
   color: #4d5a5f;
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
   font-size: 12px;
 }
 
 .ward-koho-section-label {
   width: fit-content;
-  margin: 26px 0 10px;
-  padding: 4px 10px;
-  color: #fff;
-  background: #8f3f32;
+  margin: 34px 0 10px;
+  padding: 0;
+  border: 0;
+  color: #527866;
+  background: transparent;
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: .08em;
@@ -1747,16 +1793,27 @@ body.ward {
   margin: 0;
   padding: 0;
   border: 0;
-  color: #202d32;
-  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-  font-size: clamp(35px, 5vw, 58px);
-  line-height: 1.25;
-  letter-spacing: .025em;
+  color: #202622;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", serif;
+  font-size: clamp(16px, 3.55vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .015em;
+  white-space: nowrap;
+}
+
+.ward-content .ward-koho-masthead h2::after {
+  display: block;
+  width: min(290px, 46%);
+  height: 5px;
+  margin-top: 20px;
+  background: #315f49;
+  content: "";
 }
 
 .ward-koho-deck {
-  max-width: 760px;
-  margin: 16px 0 0;
+  max-width: 700px;
+  margin: 20px 0 0;
   font-size: 17px;
   line-height: 1.85;
 }
@@ -1769,11 +1826,13 @@ body.ward {
 }
 
 .ward-koho-byline {
-  margin: 0 0 26px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #b9b2a2;
-  color: #596269;
+  margin: 16px 0 0;
+  padding: 0;
+  border: 0;
+  color: #515b55;
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
   font-size: 12px;
+  text-align: right;
 }
 
 .ward-koho-article > section + section {
@@ -1798,14 +1857,22 @@ body.ward {
 }
 
 .ward-koho-quote {
-  margin: 32px 0 0;
-  padding: 22px 25px;
+  position: relative;
+  margin: 42px 0 0;
+  padding: 27px 30px 24px 56px;
   border: 0;
-  border-top: 3px solid #8f3f32;
-  border-bottom: 1px solid #b9b2a2;
-  background: #f6f1e6;
-  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  background: #f1efe6;
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
   font-size: 17px;
+}
+
+.ward-koho-quote::before {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: #527866;
+  content: "“";
+  font: 54px/.9 Georgia, serif;
 }
 
 .ward-koho-quote p {
@@ -1855,9 +1922,10 @@ body.ward {
   flex-wrap: wrap;
   gap: 5px 24px;
   margin-top: 34px;
-  padding-top: 13px;
-  border-top: 1px solid #776f60;
+  padding-top: 0;
+  border: 0;
   color: #596269;
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
   font-size: 11px;
 }
 
@@ -2144,7 +2212,15 @@ body.ward {
   }
 
   .ward-content .ward-koho-masthead h2 {
-    font-size: 34px;
+    font-size: clamp(15px, 4vw, 22px);
+  }
+
+  .ward-koho-quote {
+    padding: 24px 18px 21px 45px;
+  }
+
+  .ward-koho-quote::before {
+    left: 13px;
   }
 
   .ward-home-news li {
@@ -2345,6 +2421,16 @@ body.ward {
   font-weight: 800;
 }
 
+.ward-staff-history {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ward-staff-history li + li {
+  margin-top: 7px;
+}
+
 .ward-staff-publication {
   margin-top: 34px;
   padding: 24px;
@@ -2364,21 +2450,69 @@ body.ward {
 
 /* 区広報：下原谷戸の統合図 */
 .ward-yato-figure {
-  margin: 28px 0 32px;
+  width: calc(100% + 36px);
+  margin: 32px -18px 42px;
 }
 
-.ward-yato-figure svg {
+.ward-yato-figure svg,
+.ward-yato-cutaway > img {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid #a8b2b6;
+  border: 0;
   background: #fff;
 }
 
+.ward-yato-cutaway {
+  position: relative;
+  overflow: hidden;
+  background: #faf9f4;
+}
+
+.ward-yato-label {
+  position: absolute;
+  display: grid;
+  gap: 1px;
+  padding: 4px 7px;
+  border-bottom: 2px solid #527866;
+  color: #172a23;
+  background: rgb(250 249 244 / 90%);
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
+  font-size: clamp(10px, 1.45vw, 14px);
+  font-weight: 800;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.ward-yato-label small {
+  font-size: .72em;
+  font-weight: 600;
+}
+
+.ward-yato-label-surface { top: 35%; left: 8%; }
+.ward-yato-label-fill { top: 45%; left: 31%; }
+.ward-yato-label-valley { top: 64%; left: 44%; }
+.ward-yato-label-channel { top: 81%; left: 50%; transform: translateX(-50%); }
+.ward-yato-label-water { right: 10%; bottom: 8%; }
+
 .ward-yato-figure figcaption {
-  margin-top: 8px;
+  margin-top: 10px;
+  padding-inline: 18px;
   color: #5a666b;
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
   font-size: 12px;
+  line-height: 1.65;
+}
+
+.ward-yato-figure figcaption strong,
+.ward-yato-figure figcaption > span:not(.ward-yato-scroll-help) {
+  display: block;
+}
+
+.ward-yato-figure figcaption strong {
+  color: #1b3040;
+  font-size: 13px;
+  letter-spacing: .02em;
 }
 
 .ward-yato-scroll-help {
@@ -2386,42 +2520,69 @@ body.ward {
 }
 
 .ward-yato-svg-heading {
-  fill: #233e49;
+  fill: #1b3040;
   font-family: system-ui, -apple-system, "Yu Gothic", sans-serif;
   font-size: 24px;
   font-weight: 800;
 }
 
 .ward-yato-svg-label {
-  fill: #33464e;
+  fill: #24333b;
   font-family: system-ui, -apple-system, "Yu Gothic", sans-serif;
   font-size: 21px;
   font-weight: 700;
 }
 
 .ward-yato-svg-emphasis {
-  fill: #125d83;
+  fill: #527866;
   font-family: system-ui, -apple-system, "Yu Gothic", sans-serif;
   font-size: 22px;
   font-weight: 800;
 }
 
 .ward-yato-points {
-  margin-top: 30px;
+  margin-top: 46px;
+}
+
+.ward-content .ward-yato-points h3 {
+  margin: 0 0 30px;
+  padding: 0;
+  border: 0;
+  color: #1b3040;
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
+  font-size: 22px;
 }
 
 .ward-yato-points > div {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px clamp(36px, 6vw, 64px);
 }
 
 .ward-yato-points p {
+  position: relative;
   margin: 0;
-  padding: 17px;
-  border-top: 4px solid #47707f;
-  background: #eef3f4;
+  min-height: 74px;
+  padding: 0 0 0 50px;
+  border: 0;
+  background: transparent;
   line-height: 1.65;
+}
+
+.ward-yato-points p::before {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  color: #527866;
+  content: attr(data-step);
+  font: 750 24px/1 system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
+  letter-spacing: .04em;
+}
+
+.ward-yato-points p:nth-child(3) {
+  grid-column: 1 / -1;
+  width: calc(50% - 32px);
+  justify-self: center;
 }
 
 .ward-yato-points strong,
@@ -2430,8 +2591,9 @@ body.ward {
 }
 
 .ward-yato-points strong {
-  margin-bottom: 5px;
-  color: #254c5c;
+  margin-bottom: 8px;
+  color: #1b3040;
+  font-family: system-ui, -apple-system, "Yu Gothic UI", "Yu Gothic", sans-serif;
 }
 
 /* 本形町東側の地盤・内水確認 */
@@ -2552,6 +2714,12 @@ body.ward {
     grid-template-columns: 1fr;
   }
 
+  .ward-yato-points p:nth-child(3) {
+    grid-column: auto;
+    width: auto;
+    justify-self: stretch;
+  }
+
   .ward-project-relationship li:not(:last-child)::after {
     top: auto;
     right: 50%;
@@ -2581,27 +2749,19 @@ body.ward {
   }
 
   .ward-yato-figure {
+    width: calc(100% + 24px);
     margin-inline: -12px;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scrollbar-width: thin;
+    overflow: hidden;
   }
 
-  .ward-yato-figure svg {
-    width: 660px;
-    max-width: none;
-  }
+  .ward-yato-figure svg,
+  .ward-yato-cutaway > img { width: 100%; max-width: 100%; }
 
   .ward-yato-figure figcaption {
     padding-inline: 12px;
   }
 
-  .ward-yato-scroll-help {
-    display: block;
-    margin-bottom: 3px;
-    color: #254c5c;
-    font-weight: 700;
-  }
+  .ward-yato-label { padding: 3px 5px; font-size: 8px; }
 }
 
 /* cascade lock: independent portal rules follow the legacy theme */
@@ -2725,6 +2885,196 @@ body.ward {
 .ward-inland-assignee span { border-right:1px solid #777; color:#222; background:#eee; }
 .ward-inland-assignee strong { color:#111; font-size:14px; font-weight:700; }
 
+.ward-approval-simple {
+  color:#111;
+  background:#fff;
+  font-family:"Meiryo UI",Meiryo,"Yu Gothic UI",sans-serif;
+}
+.ward-approval-simple .ward-approval-head {
+  padding-right:164px;
+  padding-bottom:24px;
+  border-bottom:3px double #333;
+}
+.ward-approval-simple .ward-approval-head > p {
+  margin:0 0 15px;
+  color:#333;
+  font-size:11px;
+  letter-spacing:.08em;
+}
+.ward-content .ward-approval-simple .ward-approval-head > h2 {
+  margin:0 0 24px;
+  padding:0;
+  border:0;
+  color:#111;
+  font-family:"Meiryo UI",Meiryo,"Yu Gothic UI",sans-serif;
+  font-size:27px;
+  font-weight:700;
+  line-height:1.45;
+  letter-spacing:.02em;
+}
+.ward-approval-simple .ward-approval-head > dl {
+  margin:0;
+  border-color:#777;
+  background:#fff;
+}
+.ward-approval-simple .ward-approval-head > dl > div,
+.ward-approval-simple .ward-approval-head > dl > div + div {
+  border-color:#999;
+}
+.ward-approval-simple .ward-approval-head dt,
+.ward-approval-simple .ward-approval-head dd {
+  color:#111;
+  background:#fff;
+  font-family:"Meiryo UI",Meiryo,"Yu Gothic UI",sans-serif;
+  font-size:11px;
+}
+.ward-approval-simple .ward-approval-head dt {
+  background:#eee;
+}
+.ward-content .ward-approval-simple > section {
+  margin-top:34px;
+}
+.ward-content .ward-approval-simple > section > h3 {
+  margin:0 0 14px;
+  padding:0 0 8px;
+  border:0;
+  border-bottom:1px solid #555;
+  color:#111;
+  font-family:"Meiryo UI",Meiryo,"Yu Gothic UI",sans-serif;
+  font-size:17px;
+  font-weight:700;
+  line-height:1.5;
+  letter-spacing:0;
+}
+.ward-content .ward-approval-simple > section > p {
+  margin:0 0 14px;
+  color:#111;
+  font-family:"Meiryo UI",Meiryo,"Yu Gothic UI",sans-serif;
+  font-size:15px;
+  line-height:1.85;
+}
+.ward-content .ward-approval-simple > section > p:last-child {
+  margin-bottom:0;
+}
+.ward-approval-reference {
+  margin:24px 0 0;
+}
+.ward-approval-reference-original .ward-inland-yato { margin-top:0; }
+.ward-approval-map-layout {
+  grid-template-columns:minmax(0,1.7fr) minmax(176px,.8fr);
+  gap:18px;
+  align-items:center;
+}
+.ward-map-figure {
+  position:relative;
+  overflow:hidden;
+  border:1px solid #777;
+  background:#f5f5f3;
+  aspect-ratio:3 / 2;
+}
+.ward-map-figure > img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.08) grayscale(1);
+}
+.ward-map-overlay {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+.ward-map-overlay #ward-map-hatch line {
+  stroke:#222;
+  stroke-width:5;
+  opacity:.26;
+}
+.ward-map-site-boundary {
+  fill:rgba(255,255,255,.12);
+  stroke:#111;
+  stroke-width:8;
+  stroke-linejoin:round;
+}
+.ward-map-site-east {
+  fill:url(#ward-map-hatch);
+  stroke:#222;
+  stroke-width:4;
+  stroke-dasharray:12 10;
+}
+.ward-map-valley-axis {
+  fill:none;
+  stroke:#4b4b4b;
+  stroke-width:7;
+  stroke-dasharray:20 14;
+}
+.ward-map-label {
+  position:absolute;
+  z-index:2;
+  display:block;
+  padding:3px 6px;
+  border:1px solid #333;
+  color:#111;
+  background:rgba(255,255,255,.92);
+  font-family:"Meiryo UI",Meiryo,"Yu Gothic UI",sans-serif;
+  font-size:10px;
+  font-weight:700;
+  line-height:1.25;
+  text-align:center;
+  white-space:nowrap;
+}
+.ward-map-label small {
+  font-size:8px;
+  font-weight:400;
+}
+.ward-map-site-label { top:49%; left:49%; }
+.ward-map-east-label { top:61%; left:65%; }
+.ward-map-yato-label { top:11%; left:66%; }
+.ward-map-station-label { top:29%; left:28%; transform:translate(-50%,-50%); }
+.ward-approval-reference-table {
+  width:100%;
+  align-self:center;
+  border-collapse:collapse;
+  color:#111;
+  background:#fff;
+  font-family:"Meiryo UI",Meiryo,"Yu Gothic UI",sans-serif;
+  font-size:12px;
+}
+.ward-approval-reference-table caption {
+  margin:0;
+  padding:0 0 8px;
+  border-bottom:2px solid #333;
+  color:#111;
+  font-size:15px;
+  font-weight:700;
+  text-align:left;
+}
+.ward-approval-reference-table th,
+.ward-approval-reference-table td {
+  padding:9px 10px;
+  border:1px solid #888;
+  text-align:left;
+}
+.ward-approval-reference-table th {
+  width:32px;
+  color:#111;
+  background:#eee;
+  font-weight:700;
+  text-align:center;
+}
+.ward-approval-reference figcaption {
+  margin-top:7px;
+  color:#444;
+  font-family:"Meiryo UI",Meiryo,"Yu Gothic UI",sans-serif;
+  font-size:10px;
+  line-height:1.6;
+}
+.ward-approval-reference figcaption strong {
+  color:#111;
+  font-weight:700;
+}
+
 @media (max-width:600px) {
   .ward-viewer-toolbar { max-width:100%; padding-inline:10px; }
   .ward-viewer-toolbar > div { flex:none; }
@@ -2753,6 +3103,19 @@ body.ward {
   }
   .ward-inland-assignee { display:block; }
   .ward-inland-assignee span { border-right:0; border-bottom:1px solid #777; }
+  .ward-content .ward-approval-simple .ward-approval-head > h2 { font-size:23px; }
+  .ward-content .ward-approval-simple > section > p { font-size:14px; }
+  .ward-approval-reference {
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scrollbar-width:thin;
+  }
+  .ward-approval-map-layout {
+    grid-template-columns:1fr;
+    min-width:0;
+  }
+  .ward-map-label { font-size:9px; }
+  .ward-map-label small { font-size:7px; }
 }
 
 /* persistent header search */
@@ -2836,4 +3199,408 @@ body.ward {
 .ward-home-picks article {
   border: 1px solid #cad9ce;
   border-radius: 10px;
+}
+
+/* R-18: plain municipal handout based on Setagaya City's print-document density. */
+.ward-r18-viewer .ward-viewer-stage {
+  padding: 28px;
+  background: #555;
+}
+
+.ward-r18-viewer .ward-r18-sheet,
+.ward-r18-viewer .ward-r18-sheet * {
+  font-family: "Meiryo UI", Meiryo, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.ward-r18-viewer .ward-r18-sheet {
+  width: min(794px, 100%);
+  min-height: 1123px;
+  padding: 58px 64px 70px;
+  color: #111;
+  background: #fff;
+}
+
+.ward-r18-viewer .ward-r18-sheet h2,
+.ward-r18-viewer .ward-r18-sheet h3,
+.ward-r18-viewer .ward-r18-sheet p,
+.ward-r18-viewer .ward-r18-sheet dl {
+  color: #111;
+}
+
+.ward-r18-viewer .ward-r18-control {
+  padding: 0 0 22px;
+  border: 0;
+  border-bottom: 1px solid #555;
+}
+
+.ward-r18-viewer .ward-r18-control > p {
+  margin: 0 0 22px;
+  color: #111;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+.ward-content .ward-r18-viewer .ward-r18-control h2 {
+  margin: 0 0 28px;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.75;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.ward-r18-viewer .ward-r18-control dl {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  margin: 0;
+  border: 0;
+}
+
+.ward-r18-viewer .ward-r18-control dt,
+.ward-r18-viewer .ward-r18-control dd {
+  margin: 0;
+  padding: 3px 0;
+  border: 0;
+  color: #111;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.ward-r18-viewer .ward-r18-control dt {
+  font-weight: 700;
+}
+
+.ward-r18-viewer .ward-r18-decision,
+.ward-r18-viewer #r18-results,
+.ward-r18-viewer .ward-r18-reference {
+  margin: 32px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.ward-content .ward-r18-viewer .ward-r18-decision h3,
+.ward-content .ward-r18-viewer #r18-results > h3,
+.ward-content .ward-r18-viewer .ward-r18-reference > h3 {
+  margin: 0 0 14px;
+  padding: 0 0 5px;
+  border: 0;
+  border-bottom: 1px solid #777;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+
+.ward-r18-viewer .ward-r18-decision p {
+  margin: 0 0 14px;
+  color: #111;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.ward-r18-viewer .ward-pdf-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ward-r18-viewer .ward-pdf-table table,
+.ward-r18-viewer .ward-r18-results {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.ward-r18-viewer .ward-pdf-table thead {
+  display: table-header-group;
+}
+
+.ward-r18-viewer .ward-pdf-table tbody {
+  display: table-row-group;
+}
+
+.ward-r18-viewer .ward-pdf-table tr {
+  display: table-row;
+  margin: 0;
+  border: 0;
+}
+
+.ward-r18-viewer .ward-pdf-table th,
+.ward-r18-viewer .ward-pdf-table td {
+  display: table-cell;
+  width: auto;
+  padding: 7px 10px;
+  border: 1px solid #777;
+  color: #111;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: left;
+  vertical-align: top;
+}
+
+.ward-r18-viewer .ward-pdf-table thead th,
+.ward-r18-viewer .ward-pdf-table tbody th {
+  color: #111;
+  background: #fff;
+  font-weight: 700;
+}
+
+.ward-r18-viewer .ward-pdf-table th:first-child {
+  width: 38%;
+}
+
+.ward-r18-viewer .ward-r18-results td::before {
+  display: none;
+  content: none;
+}
+
+@media (max-width: 600px) {
+  .ward-r18-viewer .ward-viewer-stage {
+    padding: 8px 5px;
+  }
+
+  .ward-r18-viewer .ward-r18-sheet,
+  .ward-r18-viewer .ward-r18-sheet * {
+    font-size: 14px;
+  }
+
+  .ward-r18-viewer .ward-r18-sheet {
+    min-height: 0;
+    padding: 30px 18px 42px;
+  }
+
+  .ward-content .ward-r18-viewer .ward-r18-control h2,
+  .ward-content .ward-r18-viewer .ward-r18-decision h3,
+  .ward-content .ward-r18-viewer #r18-results > h3,
+  .ward-content .ward-r18-viewer .ward-r18-reference > h3,
+  .ward-r18-viewer .ward-r18-control > p,
+  .ward-r18-viewer .ward-r18-control dt,
+  .ward-r18-viewer .ward-r18-control dd,
+  .ward-r18-viewer .ward-r18-decision p,
+  .ward-r18-viewer .ward-pdf-table th,
+  .ward-r18-viewer .ward-pdf-table td {
+    font-size: 14px;
+  }
+
+  .ward-r18-viewer .ward-r18-control dl {
+    grid-template-columns: 84px minmax(0, 1fr);
+  }
+
+  .ward-r18-viewer .ward-r18-control dt,
+  .ward-r18-viewer .ward-r18-control dd {
+    padding: 3px 0;
+    border: 0;
+  }
+
+  .ward-r18-viewer .ward-pdf-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ward-r18-viewer .ward-pdf-table table,
+  .ward-r18-viewer .ward-r18-results {
+    min-width: 0;
+  }
+}
+
+/* 区広報の特集見出しは誌面内で一行の編集見出しとして扱う */
+.ward-magazine-viewer .ward-koho-masthead h2 {
+  color: #202622;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", serif;
+  font-size: clamp(16px, 3.55vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .015em;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .ward-magazine-viewer .ward-koho-masthead h2 {
+    font-size: clamp(14px, 3.75vw, 17px);
+    white-space: nowrap;
+  }
+}
+
+/* Public minutes: the same restrained municipal-document treatment as R-18. */
+.ward-minutes-viewer .ward-viewer-stage {
+  padding: 28px;
+  background: #555;
+}
+
+.ward-minutes-viewer .ward-minutes-record,
+.ward-minutes-viewer .ward-minutes-record * {
+  font-family: "Meiryo UI", Meiryo, sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.ward-minutes-viewer .ward-minutes-record {
+  width: min(794px, 100%);
+  min-height: 1123px;
+  padding: 58px 64px 70px;
+  color: #111;
+  background: #fff;
+}
+
+.ward-minutes-viewer .ward-archive-record {
+  margin: 0;
+  padding: 0 0 22px;
+  border: 0;
+  border-bottom: 1px solid #555;
+  background: #fff;
+}
+
+.ward-content .ward-minutes-viewer .ward-archive-record > h2 {
+  margin: 0 0 28px;
+  padding: 0;
+  border: 0;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.75;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.ward-minutes-viewer .ward-record-meta {
+  display: block;
+  margin: 0;
+  border: 0;
+}
+
+.ward-minutes-viewer .ward-record-meta > div {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  border: 0;
+}
+
+.ward-minutes-viewer .ward-record-meta dt,
+.ward-minutes-viewer .ward-record-meta dd {
+  margin: 0;
+  padding: 3px 0;
+  border: 0;
+  color: #111;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.ward-minutes-viewer .ward-record-meta dt {
+  font-weight: 700;
+}
+
+.ward-minutes-viewer .ward-minutes-transcript {
+  margin-top: 32px;
+}
+
+.ward-content .ward-minutes-viewer .ward-minutes-transcript > h2,
+.ward-content .ward-minutes-viewer .ward-minutes-topic > h3 {
+  margin: 0 0 14px;
+  padding: 0 0 5px;
+  border: 0;
+  border-bottom: 1px solid #777;
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+
+.ward-minutes-viewer .ward-minutes-topic + .ward-minutes-topic {
+  margin-top: 30px;
+}
+
+.ward-minutes-viewer .ward-exchange-list {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+}
+
+.ward-minutes-viewer .ward-exchange {
+  display: block;
+  margin: 0;
+  padding: 14px 0 16px;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  border-radius: 0;
+  color: #111;
+  background: #fff;
+}
+
+.ward-minutes-viewer .ward-speaker {
+  margin: 0;
+  padding: 0;
+  color: #111;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.ward-minutes-viewer .ward-speaker span {
+  display: inline-block;
+  min-width: 72px;
+  margin-right: 12px;
+  color: #111;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.ward-minutes-viewer .ward-statement {
+  margin: 0;
+  padding: 7px 0 0;
+  color: #111;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+@media (max-width: 600px) {
+  .ward-minutes-viewer .ward-viewer-stage {
+    padding: 8px 5px;
+  }
+
+  .ward-minutes-viewer .ward-minutes-record,
+  .ward-minutes-viewer .ward-minutes-record * {
+    font-size: 14px;
+  }
+
+  .ward-minutes-viewer .ward-minutes-record {
+    min-height: 0;
+    padding: 30px 18px 42px;
+  }
+
+  .ward-content .ward-minutes-viewer .ward-archive-record > h2,
+  .ward-content .ward-minutes-viewer .ward-minutes-transcript > h2,
+  .ward-content .ward-minutes-viewer .ward-minutes-topic > h3,
+  .ward-minutes-viewer .ward-record-meta dt,
+  .ward-minutes-viewer .ward-record-meta dd,
+  .ward-minutes-viewer .ward-speaker,
+  .ward-minutes-viewer .ward-speaker span,
+  .ward-minutes-viewer .ward-statement {
+    font-size: 14px;
+  }
+
+  .ward-minutes-viewer .ward-record-meta > div {
+    grid-template-columns: 84px minmax(0, 1fr);
+  }
+
+  .ward-minutes-viewer .ward-record-meta dt,
+  .ward-minutes-viewer .ward-record-meta dd {
+    padding: 3px 0;
+    border: 0;
+  }
 }

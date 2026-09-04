@@ -79,7 +79,7 @@ body.materials { height:100vh; height:100dvh; margin:0; overflow:hidden; color:v
 .pdf-section p { margin:0 0 1.25em; color:#172027; font-size:14px; line-height:1.9; }
 .pdf-conclusion { padding:22px; border:2px solid #313a40; background:#f7f7f5; }
 .pdf-conclusion h2 { border-bottom-color:#313a40; }
-.pdf-conclusion .pdf-primary-conclusion { font-size:1.16rem; font-weight:700; line-height:1.75; }
+.pdf-primary-conclusion { font-size:1.16rem; font-weight:700; line-height:1.75; }
 .internal-table-wrap { max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
 .internal-table-wrap table { width:100%; border-collapse:collapse; color:#172027; font-size:13px; line-height:1.65; }
 .internal-table-wrap th,.internal-table-wrap td { padding:9px 10px; border:1px solid #aeb5ba; text-align:left; vertical-align:top; }
@@ -87,8 +87,177 @@ body.materials { height:100vh; height:100dvh; margin:0; overflow:hidden; color:v
 .pdf-reference { margin-top:52px; }
 .pdf-reference table { font-size:12px; }
 
+/* R-17: 京西地盤解析の技術報告書。区の公開資料とは別の誌面体系にする。 */
+.pdf-page-r17 {
+  position:relative;
+  padding-top:48px;
+  border-top:8px solid #274c52;
+  background:#fff;
+  font-family:"Yu Gothic UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
+}
+.pdf-page-r17::before {
+  position:absolute;
+  top:18px;
+  right:clamp(30px,6vw,66px);
+  color:#6c7a7d;
+  content:"KEISEI GEO ANALYTICS / TECHNICAL REPORT";
+  font:600 9px/1.4 Arial,sans-serif;
+  letter-spacing:.14em;
+}
+.pdf-page-r17 .pdf-document-label {
+  width:fit-content;
+  margin-bottom:17px;
+  padding:4px 9px;
+  border:1px solid #6e8589;
+  color:#274c52;
+  background:#f7faf9;
+  font:700 11px/1.5 "Yu Gothic UI",Meiryo,sans-serif;
+  letter-spacing:.08em;
+}
+.pdf-page-r17 > h1 {
+  margin-bottom:30px;
+  padding:2px 0 3px 18px;
+  border-left:5px solid #d77943;
+  color:#172a2e;
+  font-size:clamp(1.32rem,2.45vw,1.82rem);
+  line-height:1.55;
+  letter-spacing:.025em;
+}
+.internal-document-meta-r17 {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  border:1px solid #87979a;
+  border-bottom:0;
+}
+.internal-document-meta-r17 > div {
+  grid-template-columns:7.2em minmax(0,1fr);
+  border-right:1px solid #b7c0c2;
+  border-bottom:1px solid #87979a;
+}
+.internal-document-meta-r17 > div:nth-child(2n) { border-right:0; }
+.internal-document-meta-r17 dt,
+.internal-document-meta-r17 dd { padding:7px 9px; font-size:11px; }
+.internal-document-meta-r17 dt { color:#31484c; background:#eef3f2; }
+.r17-section-heading {
+  margin:0 0 18px;
+  display:flex;
+  align-items:stretch;
+  border-bottom:2px solid #274c52;
+}
+.r17-section-heading > span {
+  min-width:42px;
+  padding:7px 9px 6px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  background:#274c52;
+  font:700 11px/1 Arial,sans-serif;
+  letter-spacing:.08em;
+}
+.pdf-section .r17-section-heading h2 {
+  margin:0;
+  padding:5px 11px 6px;
+  border:0;
+  color:#172a2e;
+  font-size:1.06rem;
+  line-height:1.5;
+}
+.r17-section-heading h2 i {
+  margin-right:.48em;
+  color:#d77943;
+  font-size:.72em;
+  font-style:normal;
+}
+.r17-assessment .pdf-primary-conclusion {
+  margin:0 0 22px;
+  padding:14px 18px;
+  border-left:5px solid #274c52;
+  color:#111b1d;
+  background:#f1f5f4;
+  font-size:1.18rem;
+  font-weight:700;
+  line-height:1.75;
+}
+.r17-assessment-group { margin:22px 0 0; }
+.r17-assessment-group h3 {
+  margin:0 0 8px;
+  color:#31484c;
+  font-size:13px;
+  line-height:1.5;
+  letter-spacing:.04em;
+}
+.r17-assessment-group ul { margin:0; padding:0; list-style:none; }
+.r17-assessment-group li {
+  position:relative;
+  margin:0;
+  padding:3px 0 3px 1.35em;
+  color:#172027;
+  font-size:13px;
+  line-height:1.78;
+}
+.r17-assessment-group li::before {
+  position:absolute;
+  left:0;
+  color:#274c52;
+  content:"・";
+  font-weight:700;
+}
+.r17-assessment .r17-hold-statement {
+  margin:24px 0 0;
+  padding-top:13px;
+  border-top:1px solid #9aa7a9;
+  color:#172027;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.8;
+}
+.r17-data-section { margin-top:48px; }
+.r17-data-section .internal-table-wrap { border-top:0; }
+.r17-data-section .internal-table-wrap table { border-top:1px solid #67777a; }
+.r17-data-section .internal-table-wrap th,
+.r17-data-section .internal-table-wrap td {
+  padding:9px 11px;
+  border:0;
+  border-bottom:1px solid #b4bdbe;
+}
+.r17-data-section .internal-table-wrap thead th {
+  color:#fff;
+  background:#405d62;
+  font-size:11px;
+  letter-spacing:.04em;
+}
+.r17-data-section .internal-table-wrap tbody th {
+  width:31%;
+  color:#263c40;
+  background:#eef3f2;
+}
+
+@media (max-width:760px) {
+  .pdf-page-r17::before { display:none; }
+  .internal-document-meta-r17 { grid-template-columns:1fr; }
+  .internal-document-meta-r17 > div { border-right:0; }
+  .r17-assessment .pdf-primary-conclusion { padding:12px 14px; font-size:1.05rem; }
+  .r17-assessment-group li { font-size:12px; }
+}
+
 /* Work mail */
 .record-preview-application { overflow:hidden; background:#eef1f4; color:var(--mail-ink); }
+.record-preview-application.has-mail-entry-effect { position:relative; }
+.mail-entry-effect { position:absolute; z-index:20; inset:0; overflow:hidden; color:#9fffc1; background:#000; opacity:1; transition:opacity .48s ease,filter .48s ease; font-family:var(--record-mono); }
+.mail-entry-effect.is-resolved { opacity:0; filter:brightness(1.8) contrast(1.15); }
+.mail-entry-scanlines { position:absolute; inset:0; z-index:2; opacity:.28; background:repeating-linear-gradient(180deg,transparent 0 3px,rgb(0 0 0 / 42%) 3px 4px); pointer-events:none; }
+.mail-entry-terminal { position:relative; z-index:1; box-sizing:border-box; height:100%; padding:clamp(20px,4vw,46px); display:grid; grid-template-rows:auto minmax(0,1fr) auto; }
+.mail-entry-terminal > header { padding-bottom:12px; display:flex; align-items:center; justify-content:space-between; gap:18px; border-bottom:1px solid #1c6841; color:#d8ffe4; font-size:clamp(10px,1.25vw,13px); letter-spacing:.08em; }
+.mail-entry-terminal > header time { color:#4fdc86; white-space:nowrap; }
+.mail-entry-stream { min-height:0; padding:18px 0; overflow:hidden; -webkit-mask-image:linear-gradient(transparent,#000 12%,#000 90%,transparent); mask-image:linear-gradient(transparent,#000 12%,#000 90%,transparent); }
+.mail-entry-stream p { margin:0; color:#49da84; font:clamp(10px,1.15vw,13px)/1.45 var(--record-mono); letter-spacing:.025em; white-space:pre; }
+.mail-entry-stream p:nth-child(3n) { color:#29a7c4; }
+.mail-entry-stream p:nth-child(5n) { color:#b4ffd0; }
+.mail-entry-stream p.is-system { margin:3px 0; color:#e5ffe9; font-weight:700; text-shadow:0 0 9px rgb(67 255 133 / 50%); }
+.mail-entry-stream p.is-final { color:#fff; background:#0b4126; }
+.mail-entry-terminal > footer { display:grid; grid-template-columns:auto minmax(100px,240px); align-items:center; gap:20px; color:#afffc7; font-size:clamp(9px,1.1vw,12px); letter-spacing:.07em; }
+.mail-entry-terminal > footer b { height:4px; overflow:hidden; background:#10291d; }
+.mail-entry-terminal > footer i { width:0; height:100%; display:block; background:#51ff8c; box-shadow:0 0 10px #35ff75; transition:width .12s linear; }
 .workmail-app { height:100%; min-width:0; display:grid; grid-template-rows:52px minmax(0,1fr); background:#fff; font-family:"Segoe UI","Yu Gothic UI",Meiryo,sans-serif; }
 .workmail-top { min-width:0; padding:0 12px; display:grid; grid-template-columns:auto minmax(0,1fr) 44px; align-items:center; gap:14px; border-bottom:1px solid #cbd1d7; background:#f7f8fa; }
 .workmail-top > div { display:flex; align-items:center; gap:8px; white-space:nowrap; }
@@ -123,22 +292,28 @@ body.materials { height:100vh; height:100dvh; margin:0; overflow:hidden; color:v
 .workmail-actions { margin-top:10px; display:flex; flex-wrap:wrap; gap:5px; }
 .workmail-actions button { min-height:32px; padding:5px 9px; border:1px solid #c9d0d6; border-radius:2px; color:#65717c; background:#f7f8f9; font-size:.67rem; }
 .mail-mobile-back { display:none; min-height:44px; padding:0 8px; border:0; color:#155f96; background:transparent; font-weight:700; }
-.workmail-thread { padding:4px 20px 80px; }
-.workmail-message { padding:18px 0 22px; border-bottom:1px solid var(--mail-line); scroll-margin-top:118px; }
+.workmail-thread { padding:4px 20px clamp(180px,38vh,360px); }
+.workmail-message { padding:18px 12px 22px; border-bottom:1px solid var(--mail-line); scroll-margin-top:118px; }
+.workmail-message.is-sakuma { background:#f2f6f9; }
 .workmail-message:focus { outline:0; }
-.workmail-message > header { display:grid; grid-template-columns:36px minmax(0,1fr) auto; gap:10px; align-items:start; }
-.workmail-avatar { width:36px; height:36px; display:grid; place-items:center; border-radius:50%; color:#fff; background:#557a99; font-size:.8rem; }
-.workmail-message > header > div:nth-child(2) { min-width:0; }
+.workmail-message > header { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px; align-items:start; }
+.workmail-message.has-sender-avatar > header { grid-template-columns:40px minmax(0,1fr) auto; }
+.workmail-person-photo { width:40px; height:40px; display:block; border:1px solid #c7ced4; border-radius:50%; background:#eef1f4; object-fit:cover; object-position:50% 29%; }
+.workmail-message header .workmail-person-initial { width:40px; height:40px; display:grid; place-items:center; border:1px solid #aebfcd; border-radius:50%; color:#37566c; background:#dfe9f0; font-size:.82rem; font-weight:700; line-height:1; }
+.workmail-sender { min-width:0; }
 .workmail-message header strong,.workmail-message header span { display:block; overflow-wrap:anywhere; }
 .workmail-message header strong { font-size:.76rem; }
 .workmail-message header span,.workmail-message header time { color:var(--mail-muted); font-size:.64rem; line-height:1.6; }
-.workmail-message-attachment { margin:13px 0 0 46px; }
-.mail-message-body { padding:16px 6px 0 46px; color:#222b33; }
+.workmail-message-attachment { margin:13px 0 0; }
+.workmail-message.has-sender-avatar .workmail-message-attachment { margin-left:50px; }
+.mail-message-body { padding:16px 6px 0 0; color:#222b33; }
+.workmail-message.has-sender-avatar .mail-message-body { padding-left:50px; }
 .mail-message-body p { margin:0 0 1.15em; font-size:.84rem; line-height:1.8; }
 .mail-attachment-chip { min-height:44px; padding:7px 10px; display:inline-flex; align-items:center; gap:8px; border:1px solid #c7ced4; border-radius:2px; color:#26313a; background:#f7f8f9; text-decoration:none; }
 .mail-attachment-chip span { color:#5d6c78; font-size:.6rem; }
 .mail-attachment-chip strong { font-size:.72rem; }
 .mail-attachment-chip small { color:#6d7881; font-size:.62rem; }
+.mail-draft-attachments .mail-attachment-chip { cursor:default; }
 .draft-status { display:inline-block; margin-top:7px; color:#855b24; font-size:.7rem; }
 .mail-draft-pane { padding:20px 24px 90px; scroll-margin-top:90px; }
 .mail-draft-pane:focus { outline:0; }
@@ -155,7 +330,7 @@ body.materials { height:100vh; height:100dvh; margin:0; overflow:hidden; color:v
 .email-actions button:disabled { opacity:.55; }
 .email-disclaimer { margin-top:12px !important; color:var(--mail-muted) !important; font-size:.66rem !important; line-height:1.6 !important; }
 
-/* PC LINE-like reader */
+/* PC LIME-like reader */
 .line-app { height:100%; min-width:0; display:grid; grid-template-columns:50px 200px minmax(0,1fr); color:#1c252c; background:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Yu Gothic UI",Meiryo,sans-serif; }
 .line-icons { display:flex; flex-direction:column; align-items:center; border-right:1px solid #d6dbde; background:#2f383d; }
 .line-icons button { width:50px; height:52px; border:0; border-radius:0; color:#aeb9bf; background:transparent; }
@@ -167,6 +342,8 @@ body.materials { height:100vh; height:100dvh; margin:0; overflow:hidden; color:v
 .line-talk { min-height:74px; padding:10px 12px; display:grid; grid-template-columns:42px minmax(0,1fr); gap:10px; align-items:center; border-bottom:1px solid #e0e4e6; }
 .line-talk.is-selected { background:#e1e5e7; }
 .line-avatar { width:40px; height:40px; display:grid; place-items:center; border-radius:50%; color:#fff; background:#678294; font-size:.78rem; }
+.line-talk > div > span { display:flex; min-width:0; align-items:baseline; justify-content:space-between; gap:8px; }
+.line-talk time { flex:0 0 auto; color:#899299; font-size:.55rem; font-weight:400; }
 .line-talk strong,.line-talk small { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .line-talk strong { font-size:.78rem; }
 .line-talk small { margin-top:4px; color:#77828a; font-size:.65rem; }
@@ -202,7 +379,6 @@ body.materials { height:100vh; height:100dvh; margin:0; overflow:hidden; color:v
 .access-log pre { display:none; margin:0 0 18px; white-space:pre-wrap; overflow-wrap:anywhere; color:var(--record-muted); font:1rem/1.65 var(--record-mono); }
 .access-log pre.is-visible { display:block; }
 .access-log pre:first-child,.access-log pre:last-child { color:var(--record-text); }
-.access-skip { position:fixed; top:max(16px,env(safe-area-inset-top)); right:max(16px,env(safe-area-inset-right)); min-height:44px; padding:8px 12px; border:1px solid #44515e; border-radius:2px; background:#111820; color:var(--record-text); font:.82rem var(--record-body); }
 .choice-transition { position:fixed; z-index:2000; inset:0; display:grid; place-items:center; color:#cdd5dc; background:#050608; opacity:0; transition:opacity 1s ease; }
 .choice-transition.is-active { opacity:1; }
 .choice-transition p { font:13px/1.6 var(--record-mono); }
@@ -248,15 +424,23 @@ body.materials { height:100vh; height:100dvh; margin:0; overflow:hidden; color:v
   .workmail-reader-head { padding:6px 14px 11px; }
   .workmail-reader-head h1 { font-size:.98rem; }
   .workmail-actions { margin-top:6px; }
-  .workmail-thread { padding:0 15px 64px; }
-  .workmail-message > header { grid-template-columns:34px minmax(0,1fr); }
-  .workmail-message > header time { grid-column:2; }
-  .workmail-message-attachment,.mail-message-body { margin-left:0; padding-left:0; }
+  .workmail-thread { padding:0 15px clamp(150px,35vh,300px); }
+  .workmail-message > header { grid-template-columns:minmax(0,1fr); }
+  .workmail-message.has-sender-avatar > header { grid-template-columns:36px minmax(0,1fr); }
+  .workmail-person-photo,.workmail-message header .workmail-person-initial { width:36px; height:36px; }
+  .workmail-message > header time { grid-column:1; }
+  .workmail-message.has-sender-avatar > header time { grid-column:2; }
+  .workmail-message-attachment,.workmail-message.has-sender-avatar .workmail-message-attachment,.mail-message-body,.workmail-message.has-sender-avatar .mail-message-body { margin-left:0; padding-left:0; }
   .mail-draft-pane { padding:16px max(16px,env(safe-area-inset-right)) calc(68px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left)); }
   .mail-draft-pane > dl > div { grid-template-columns:1fr; padding:6px 0; }
   .mail-draft-pane dt,.mail-draft-pane dd { padding:0; }
   .mail-draft-attachments { display:grid; }
   .mail-attachment-chip { width:100%; }
+  .mail-entry-terminal { padding:18px max(16px,env(safe-area-inset-right)) 18px max(16px,env(safe-area-inset-left)); }
+  .mail-entry-terminal > header { align-items:flex-start; flex-direction:column; gap:3px; }
+  .mail-entry-stream { padding-block:10px; }
+  .mail-entry-stream p { font-size:10px; }
+  .mail-entry-terminal > footer { grid-template-columns:1fr; gap:8px; }
   .email-actions { display:grid; grid-template-columns:1fr; }
   .email-actions button { width:100%; }
 
@@ -284,9 +468,11 @@ body.materials { height:100vh; height:100dvh; margin:0; overflow:hidden; color:v
 
 @media (prefers-reduced-motion:reduce) {
   *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; }
+  .mail-entry-scanlines { display:none; }
 }
 
 @media print {
-  .record-console,.access-gate,.workmail-top,.workmail-icons,.workmail-folders,.workmail-list,.fiction-notice { display:none !important; }
+  .record-console,.access-gate,.pdf-toolbar,.workmail-top,.workmail-icons,.workmail-folders,.workmail-list,.workmail-actions,.fiction-notice { display:none !important; }
   body.materials,.record-main,.record-workspace,.record-preview,.pdf-stage,.pdf-page,.workmail-app,.workmail-body,.workmail-reader { width:100%; min-height:0; height:auto; padding:0; display:block; overflow:visible; border:0; background:#fff; color:#000; box-shadow:none; }
+  .workmail-thread { padding:0; }
 }

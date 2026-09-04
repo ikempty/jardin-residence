@@ -9,6 +9,7 @@
   const items = [...app.querySelectorAll("[data-mail-select]")];
   const messages = [...app.querySelectorAll("[data-mail-message]")];
   const back = app.querySelector("[data-mail-back]");
+  const readerHead = app.querySelector(".workmail-reader-head");
   const mobile = () => window.matchMedia("(max-width: 820px)").matches;
 
   function selectMessage(id,{focus = true} = {}) {
@@ -17,7 +18,12 @@
     if (!target) return;
     if (mobile()) app.classList.add("is-reader-open");
     window.requestAnimationFrame(() => {
-      target.scrollIntoView({block:"start",behavior:"auto"});
+      if (reader) {
+        const readerBox = reader.getBoundingClientRect();
+        const targetBox = target.getBoundingClientRect();
+        const top = Math.max(0,reader.scrollTop + targetBox.top - readerBox.top - (readerHead?.offsetHeight || 0));
+        reader.scrollTo({top,behavior:"auto"});
+      }
       if (focus) target.focus({preventScroll:true});
     });
   }
@@ -30,10 +36,7 @@
   });
 
   const selected = items.find((item) => item.classList.contains("is-selected")) || items.at(-1);
-  if (selected) {
-    if (mobile()) app.classList.add("is-reader-open");
-    else selectMessage(selected.dataset.mailSelect,{focus:false});
-  }
+  if (selected) selectMessage(selected.dataset.mailSelect,{focus:false});
 
   window.addEventListener("resize",() => {
     if (!mobile()) app.classList.remove("is-reader-open");

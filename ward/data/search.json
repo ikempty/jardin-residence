@@ -31,22 +31,24 @@
   },
   {
     "id": "inland-revision",
-    "title": "本形町東側 地形・排水調査依頼計画書（2023年9月）",
+    "title": "本形町東側 地形・排水調査依頼計画書（2022年9月）",
     "section": "防災・安全",
-    "safeSnippet": "本形町東側の地形・排水に関する追加調査を庁内決裁した計画書です。",
-    "href": "../disaster/inland-water/revision-2023/",
+    "safeSnippet": "本形町東側の現地調査を東湾都市開発へ要請するための庁内伺いです。",
+    "href": "../disaster/inland-water/survey-request-2022/",
     "terms": [
-      "村山"
+      "村山",
+      "村山部長"
     ]
   },
   {
-    "id": "contract-hongata",
-    "title": "本形町二丁目地区 地形・排水追加調査業務 契約結果",
-    "section": "入札・契約",
-    "safeSnippet": "本形町二丁目の地形・排水追加調査業務に関する契約記録です。",
-    "href": "../administration/procurement/2023/urban-042/",
+    "id": "survey-implementation-record",
+    "title": "本形町二丁目地区 現地調査実施届（受理記録）",
+    "section": "住まいとまち",
+    "safeSnippet": "東湾都市開発から提出された現地調査実施届と調査報告書の受領状況を掲載しています。",
+    "href": "../machizukuri/hongata-2/survey/implementation-record/",
     "terms": [
-      "京西地盤解析"
+      "京西地盤解析",
+      "京西地盤解析株式会社"
     ]
   }
 ]
