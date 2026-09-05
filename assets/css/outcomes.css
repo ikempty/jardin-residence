@@ -208,5 +208,6 @@ body.outcome-weekly{background:#fff}
 
 @media(max-width:390px){
   .weekly-brand>img{width:58px;height:40px}.weekly-brand strong{font-size:30px;letter-spacing:.06em}
-  .weekly-main{padding-inline:15px}.weekly-article h1{font-size:26px}
+  .weekly-main{padding-inline:15px}.weekly-article h1{max-width:none;font-size:clamp(19px,6.1vw,24px);line-height:1.45;letter-spacing:0;white-space:nowrap}
+  .weekly-article h1>span{display:inline;white-space:inherit}
 }

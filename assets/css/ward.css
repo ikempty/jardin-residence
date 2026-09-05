@@ -3604,3 +3604,85 @@ body.ward {
     border: 0;
   }
 }
+
+/* iPhone Safari: municipal sheets must fit the viewport without a cropped paper canvas. */
+@media (max-width: 600px) {
+  .ward-pagehead h1 {
+    font-size: clamp(20px, 5.65vw, 22px);
+    line-height: 1.42;
+  }
+
+  .ward-approval-simple .ward-approval-head {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 0 22px;
+  }
+
+  .ward-approval-simple .ward-approval-stamps {
+    position: static;
+    order: -1;
+    align-self: flex-end;
+    margin: 0 0 20px auto;
+  }
+
+  .ward-approval-simple .ward-approval-head > p {
+    margin-bottom: 10px;
+  }
+
+  .ward-content .ward-approval-simple .ward-approval-head > h2 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .ward-inland-sheet .ward-approval-head > dl {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .ward-inland-sheet .ward-approval-head > dl > div {
+    width: 100%;
+    grid-template-columns: 78px minmax(0, 1fr);
+  }
+
+  .ward-approval-simple .ward-approval-head dt,
+  .ward-approval-simple .ward-approval-head dd {
+    padding: 9px 10px;
+    font-size: 13px;
+    line-height: 1.55;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .ward-table-wrap {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .ward-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .ward-table th,
+  .ward-table td {
+    padding: 9px 8px;
+    font-size: 13px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .ward-table tbody th {
+    width: 34%;
+  }
+
+  .ward-survey-record .ward-table tbody th {
+    width: 36%;
+  }
+}
