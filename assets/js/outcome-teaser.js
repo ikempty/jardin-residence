@@ -4,10 +4,14 @@
   const target = document.querySelector("[data-teaser-text]");
   if (!target) return;
   const share = document.querySelector(".outcome-teaser-share");
+  const stage = document.querySelector(".outcome-teaser-stage");
+  const noise = document.querySelector("[data-teaser-noise]");
 
   const message = target.dataset.message || "";
   const characters = Array.from(message);
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const noiseDelay = Number(noise?.dataset.noiseDelay) || 3000;
+  const noiseDuration = Number(noise?.dataset.noiseDuration) || 4000;
   let index = 0;
 
   if (share) {
@@ -78,5 +82,116 @@
     }
   };
 
-  window.setTimeout(appendCharacter,reducedMotion ? 0 : 850);
+  const revealMessage = () => {
+    stage?.classList.add("is-noise-complete");
+    window.setTimeout(appendCharacter,reducedMotion ? 0 : 260);
+  };
+
+  if (!noise || reducedMotion) {
+    revealMessage();
+    return;
+  }
+
+  const context = noise.getContext("2d",{alpha:false});
+  if (!context) {
+    revealMessage();
+    return;
+  }
+
+  const colors = [
+    "#02020a","#07103b","#0034ff","#006dff","#00d7ee","#00f58b",
+    "#12a733","#f000db","#ff22ad","#b500ff","#f43a25","#ffdf27","#edf4ff"
+  ];
+  let animationFrame = 0;
+  let lastFrame = 0;
+  let frameNumber = 0;
+
+  const resizeNoise = () => {
+    const width = Math.max(128,Math.min(260,Math.round(window.innerWidth / 5)));
+    const height = Math.max(96,Math.round(width * window.innerHeight / window.innerWidth));
+    if (noise.width !== width || noise.height !== height) {
+      noise.width = width;
+      noise.height = height;
+    }
+  };
+
+  const color = (offset = 0) => colors[(Math.floor(Math.random() * colors.length) + offset) % colors.length];
+  const drawNoise = () => {
+    const width = noise.width;
+    const height = noise.height;
+    context.globalAlpha = 1;
+    context.fillStyle = frameNumber % 5 === 0 ? "#061038" : "#020208";
+    context.fillRect(0,0,width,height);
+
+    const bands = 18 + Math.floor(Math.random() * 13);
+    for (let band = 0; band < bands; band += 1) {
+      const y = Math.floor(Math.random() * height);
+      const bandHeight = 2 + Math.floor(Math.random() * Math.max(3,height / 15));
+      const shift = Math.floor((Math.random() - .5) * width * .22);
+      context.globalAlpha = .58 + Math.random() * .42;
+      context.fillStyle = color(band + frameNumber);
+      context.fillRect(shift,y,width + Math.abs(shift),bandHeight);
+    }
+
+    const blocks = Math.round(width * height / 125);
+    for (let block = 0; block < blocks; block += 1) {
+      const x = Math.floor(Math.random() * width);
+      const y = Math.floor(Math.random() * height);
+      const blockWidth = 2 + Math.floor(Math.random() * Math.max(4,width / 8));
+      const blockHeight = 1 + Math.floor(Math.random() * Math.max(3,height / 18));
+      context.globalAlpha = .35 + Math.random() * .65;
+      context.fillStyle = color(block + frameNumber * 2);
+      context.fillRect(x,y,blockWidth,blockHeight);
+      if ((block + frameNumber) % 7 === 0) {
+        context.globalAlpha = .32;
+        context.fillStyle = block % 2 ? "#00eaff" : "#ff0a8a";
+        context.fillRect(Math.max(0,x - 2),y + 1,blockWidth,Math.max(1,blockHeight - 1));
+      }
+    }
+
+    context.globalAlpha = .4;
+    for (let y = frameNumber % 4; y < height; y += 4) {
+      context.fillStyle = y % 8 === 0 ? "#000" : "#d7f5ff";
+      context.fillRect(0,y,width,1);
+    }
+    if (frameNumber % 4 === 0) {
+      const tearY = Math.floor(Math.random() * height);
+      const tearHeight = 2 + Math.floor(Math.random() * 9);
+      const tearOffset = Math.floor((Math.random() - .5) * width * .35);
+      context.globalAlpha = .9;
+      context.drawImage(noise,0,tearY,width,tearHeight,tearOffset,tearY,width,tearHeight);
+    }
+    context.globalAlpha = 1;
+    frameNumber += 1;
+  };
+
+  const animateNoise = (time) => {
+    if (time - lastFrame > 58) {
+      drawNoise();
+      lastFrame = time;
+    }
+    animationFrame = window.requestAnimationFrame(animateNoise);
+  };
+
+  const finishNoise = () => {
+    window.cancelAnimationFrame(animationFrame);
+    window.removeEventListener("resize",resizeNoise);
+    noise.classList.remove("is-active");
+    noise.classList.add("is-ending");
+    window.setTimeout(() => {
+      noise.hidden = true;
+      noise.classList.remove("is-ending");
+      revealMessage();
+    },220);
+  };
+
+  window.setTimeout(() => {
+    resizeNoise();
+    drawNoise();
+    noise.hidden = false;
+    noise.classList.add("is-active");
+    window.addEventListener("resize",resizeNoise,{passive:true});
+    animationFrame = window.requestAnimationFrame(animateNoise);
+    window.setTimeout(finishNoise,noiseDuration);
+  },noiseDelay);
 })();
