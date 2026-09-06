@@ -11,7 +11,7 @@
   const characters = Array.from(message);
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const noiseDelay = Number(noise?.dataset.noiseDelay) || 3000;
-  const noiseDuration = Number(noise?.dataset.noiseDuration) || 2000;
+  const noiseDuration = Number(noise?.dataset.noiseDuration) || 800;
   let index = 0;
 
   if (share) {

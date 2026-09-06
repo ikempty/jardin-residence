@@ -7,6 +7,8 @@
   const consoleNode = document.querySelector(".record-console");
   const prompt = "audit@record:~$";
   const storageKey = "takeuchi_record_history_v2";
+  const outcomeStorageKey = "azr_material_action";
+  const completedActions = new Set(["send","delete"]);
 
   function normalize(value) {
     return String(value || "").normalize("NFKC").trim().replace(/[\s\u3000]+/g," ").toLowerCase();
@@ -94,7 +96,7 @@
     appendLine("command",value);
     input.value = "";
 
-    const target = targets.get(termHash(value));
+    const target = completedActions.has(window.localStorage.getItem(outcomeStorageKey)) ? null : targets.get(termHash(value));
     if (!target) {
       records.push({value,status:"error"});
       saveRecords(records);
