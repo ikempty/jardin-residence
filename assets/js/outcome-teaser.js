@@ -11,12 +11,12 @@
   const characters = Array.from(message);
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const noiseDelay = Number(noise?.dataset.noiseDelay) || 3000;
-  const noiseDuration = Number(noise?.dataset.noiseDuration) || 4000;
+  const noiseDuration = Number(noise?.dataset.noiseDuration) || 2000;
   let index = 0;
 
   if (share) {
-    const propertyUrl = new URL(share.dataset.propertyUrl || "../../../",window.location.href);
-    const postText = `#ジャルダン代々木下原 #新築マンション\n${propertyUrl.href}`;
+    const clearPageUrl = new URL(share.dataset.shareUrl || "https://note.com/ikempty/n/n7c1a6fc6beb0",window.location.href);
+    const postText = `#ジャルダン代々木下原 #新築マンション\n${clearPageUrl.href}`;
     const intentUrl = new URL("https://x.com/intent/tweet");
     intentUrl.searchParams.set("text",postText);
     share.href = intentUrl.href;
