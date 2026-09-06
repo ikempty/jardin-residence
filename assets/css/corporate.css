@@ -533,7 +533,8 @@ body.corporate-site {
   .corp-business-card h3 { grid-column: 2; margin: 0; font-size: 21px; }
   .corp-business-card > p:not(.corp-business-number) { grid-column: 2; margin-bottom: 8px; font-size: 14px; line-height: 1.65; }
   .corp-business-card .corp-card-link { grid-column: 2; }
-  .corp-news-list > li > a { grid-template-columns: 88px 82px; gap: 6px 10px; padding-inline: 4px; }
+  .corp-news-list > li > a,
+  .corp-news-list > li > .corp-news-static { grid-template-columns: 88px 82px; gap: 6px 10px; padding-inline: 4px; }
   .corp-news-title { grid-column: 1 / -1; }
   .corp-page-title { margin-bottom: 55px; padding: 46px 18px; }
   .corp-page-title::after { right: 18px; width: 80px; }
