@@ -98,6 +98,7 @@
 
     const target = completedActions.has(window.localStorage.getItem(outcomeStorageKey)) ? null : targets.get(termHash(value));
     if (!target) {
+      window.dispatchEvent(new CustomEvent("azr:analytics", { detail: { name: "record_search", parameters: { result: "error" } } }));
       records.push({value,status:"error"});
       saveRecords(records);
       appendLine("error",commandNotFound(value));
@@ -106,6 +107,7 @@
       return;
     }
 
+    window.dispatchEvent(new CustomEvent("azr:analytics", { detail: { name: "record_search", parameters: { result: "success" } } }));
     const message = `record opened: ${value}`;
     records.push({value,status:"success"});
     saveRecords(records);

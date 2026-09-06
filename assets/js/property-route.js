@@ -41,6 +41,7 @@
 
       if (position === expected.length) {
         position = 0;
+        window.dispatchEvent(new CustomEvent("azr:analytics", { detail: { name: "hidden_route_open" } }));
         document.documentElement.classList.add("property-route-departing");
         document.body.setAttribute("aria-busy", "true");
         window.setTimeout(() => window.location.assign(target), 450);

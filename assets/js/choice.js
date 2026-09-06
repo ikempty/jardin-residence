@@ -40,6 +40,7 @@
       if (!allowed.has(value)) return;
       const base = button.dataset.outcome;
       if (!base) return;
+      window.dispatchEvent(new CustomEvent("azr:analytics", { detail: { name: "outcome_selected", parameters: { choice: value } } }));
       window.localStorage.setItem(storageKey,value);
       window.sessionStorage.setItem("azr_material_action_at",String(Date.now()));
       document.querySelectorAll("[data-recipient]").forEach((item) => { item.disabled = true; });
